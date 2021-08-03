@@ -9,7 +9,9 @@ const PORT = process.env.PORT || 3005
 
 server.use(cors());
 server.use(express.json());
-mongoose.connect('mongodb://localhost:27017/color', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongodb://abrar:12345@cluster0-shard-00-00.bezrw.mongodb.net:27017,cluster0-shard-00-01.bezrw.mongodb.net:27017,cluster0-shard-00-02.bezrw.mongodb.net:27017/color?ssl=true&replicaSet=atlas-wtxjwi-shard-0&authSource=admin&retryWrites=true&w=majority
+// mongodb://localhost:27017/color
+mongoose.connect(process.env.MONGODB || 'abrar:12345@cluster0-shard-00-00.bezrw.mongodb.net:27017,cluster0-shard-00-01.bezrw.mongodb.net:27017,cluster0-shard-00-02.bezrw.mongodb.net:27017/color?ssl=true&replicaSet=atlas-wtxjwi-shard-0&authSource=admin&retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // http://localhost:3005
 server.get('/', (req, res) => {
